@@ -26,7 +26,7 @@ const AutopilotButton: React.FC<AutopilotButtonProps> = ({
     showNotification?.('🚀 Running AutoPilot now...');
     
     try {
-      const res = await fetch('http://localhost:3002/api/autopilot/run', {
+      const res = await fetch('https://lifestyle-design-backend-v2.onrender.com/api/autopilot/run', {
         method: 'POST'
       });
 

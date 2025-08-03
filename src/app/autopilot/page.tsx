@@ -6,7 +6,7 @@ import Link from 'next/link';
 
 
 // API configuration
-const API_BASE_URL = 'http://localhost:3002/api';
+const API_BASE_URL = 'https://lifestyle-design-backend-v2.onrender.com/api';
 
 // API helper functions
 const api = {
@@ -227,7 +227,7 @@ export default function AutopilotPage() {
     try {
       showNotification('🔄 Running autopilot manually...', 'success');
       
-      const res = await fetch('http://localhost:3002/api/autopilot/run', {
+      const res = await fetch('https://lifestyle-design-backend-v2.onrender.com/api/autopilot/run', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         mode: 'cors'

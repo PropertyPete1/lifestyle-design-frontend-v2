@@ -6,7 +6,6 @@ import 'chart.js/auto';
 import DashboardChart from '../../components/DashboardChart';
 import HeartStatusCard from '../../components/HeartStatusCard';
 import RecentAutoPilotPostsWrapper from '../../components/RecentAutoPilotPostsWrapper';
-import { API_ENDPOINTS } from '../../utils/api';
 // import NotificationSystem from '../../components/NotificationSystem'; // DISABLED
 
 type DashboardSettings = {
@@ -94,8 +93,8 @@ export default function Dashboard() {
       
       // Fetch both Instagram and YouTube analytics in parallel
       const [instagramRes, youtubeRes] = await Promise.all([
-        fetch(API_ENDPOINTS.instagramAnalytics()),
-        fetch(API_ENDPOINTS.youtubeAnalytics())
+        fetch('https://lifestyle-design-backend-v2.onrender.com/api/instagram/analytics'),
+        fetch('https://lifestyle-design-backend-v2.onrender.com/api/youtube/analytics')
       ]);
 
       let instagramData: Record<string, unknown> = {};
@@ -159,7 +158,7 @@ export default function Dashboard() {
   //   
   //   try {
   //     // Get recent activity to check for new posts
-  //     const res = await fetch('http://localhost:3002/api/activity/feed?limit=20');
+  //     const res = await fetch('https://lifestyle-design-backend-v2.onrender.com/api/activity/feed?limit=20');
   //     if (res.ok) {
   //       const data = await res.json();
   //       const activities = data.data || [];
@@ -219,7 +218,7 @@ export default function Dashboard() {
       
       // Refresh status/settings
       try {
-        const res = await fetch('http://localhost:3002/api/settings');
+        const res = await fetch('https://lifestyle-design-backend-v2.onrender.com/api/settings');
         if (res.ok) {
           const data = await res.json();
           setStatus({
@@ -255,7 +254,7 @@ export default function Dashboard() {
   const fetchQueuedPosts = useCallback(async () => {
     try {
       console.log('🔍 Fetching upcoming AutoPilot posts...');
-      const res = await fetch('http://localhost:3002/api/autopilot/queue?limit=3');
+      const res = await fetch('https://lifestyle-design-backend-v2.onrender.com/api/autopilot/queue?limit=3');
       if (res.ok) {
         const data = await res.json();
         const posts = data.posts || [];
@@ -274,7 +273,7 @@ export default function Dashboard() {
   const fetchEnhancedActivity = useCallback(async () => {
     try {
       // ✅ NEW: Get reactive chart data first
-      const chartRes = await fetch('http://localhost:3002/api/chart/status');
+      const chartRes = await fetch('https://lifestyle-design-backend-v2.onrender.com/api/chart/status');
       if (chartRes.ok) {
         const chartData = await chartRes.json();
         console.log('🔥 Chart reactive data:', chartData);
@@ -313,7 +312,7 @@ export default function Dashboard() {
     
     try {
       // Try the main activity endpoint first
-      const res = await fetch('http://localhost:3002/api/activity/feed?limit=20');
+      const res = await fetch('https://lifestyle-design-backend-v2.onrender.com/api/activity/feed?limit=20');
       if (res.ok) {
         const data = await res.json();
         const posts = data.data || [];
@@ -326,7 +325,7 @@ export default function Dashboard() {
     
     try {
       // Try the new autopilot-specific activity endpoint
-      const autopilotRes = await fetch('http://localhost:3002/api/autopilot/activity?limit=20');
+      const autopilotRes = await fetch('https://lifestyle-design-backend-v2.onrender.com/api/autopilot/activity?limit=20');
       if (autopilotRes.ok) {
         const autopilotData = await autopilotRes.json();
         const posts = autopilotData.posts || [];
@@ -417,7 +416,7 @@ export default function Dashboard() {
   useEffect(() => {
     async function fetchStatus() {
       try {
-        const res = await fetch('http://localhost:3002/api/settings')
+        const res = await fetch('https://lifestyle-design-backend-v2.onrender.com/api/settings')
         if (res.ok) {
           const data = await res.json()
           setStatus({
@@ -542,7 +541,7 @@ export default function Dashboard() {
 
         // Use scheduler status for autopilot data
         try {
-          const schedulerRes = await fetch('http://localhost:3002/api/scheduler/status')
+          const schedulerRes = await fetch('https://lifestyle-design-backend-v2.onrender.com/api/scheduler/status')
           if (schedulerRes.ok) {
             const schedulerData = await schedulerRes.json()
             if (schedulerData.success) {
@@ -744,7 +743,7 @@ export default function Dashboard() {
       
       // ✅ Check if this platform is active in autopilot settings
       try {
-        const settingsRes = await fetch('http://localhost:3002/api/settings');
+        const settingsRes = await fetch('https://lifestyle-design-backend-v2.onrender.com/api/settings');
         if (settingsRes.ok) {
           const settings = await settingsRes.json();
           const platformActive = settings.autopilotPlatforms?.[platform] !== false;
@@ -884,7 +883,7 @@ export default function Dashboard() {
     setManualPostRunning(true);
     
     try {
-      const response = await fetch(API_ENDPOINTS.autopilotManualPost(), {
+      const response = await fetch('https://lifestyle-design-backend-v2.onrender.com/api/autopilot/manual-post', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' }
       });

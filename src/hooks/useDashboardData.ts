@@ -45,7 +45,7 @@ export function useDashboardData(): DashboardData {
   const fetchDashboardData = useCallback(async () => {
     try {
       // Fetch chart status for real-time platform data
-      const chartRes = await fetch('http://localhost:3002/api/chart/status');
+      const chartRes = await fetch('https://lifestyle-design-backend-v2.onrender.com/api/chart/status');
       if (chartRes.ok) {
         const chartData = await chartRes.json();
         
@@ -76,8 +76,8 @@ export function useDashboardData(): DashboardData {
 
       // Fetch analytics for reach data
       const [instagramRes, youtubeRes] = await Promise.all([
-        fetch('http://localhost:3002/api/instagram/analytics'),
-        fetch('http://localhost:3002/api/youtube/analytics')
+        fetch('https://lifestyle-design-backend-v2.onrender.com/api/instagram/analytics'),
+        fetch('https://lifestyle-design-backend-v2.onrender.com/api/youtube/analytics')
       ]);
 
       if (instagramRes.ok) {
@@ -132,7 +132,7 @@ export function useDashboardData(): DashboardData {
   useEffect(() => {
     const pollEvents = async () => {
       try {
-        const eventRes = await fetch(`http://localhost:3002/api/events/recent?since=${Date.now() - 5000}`);
+        const eventRes = await fetch(`https://lifestyle-design-backend-v2.onrender.com/api/events/recent?since=${Date.now() - 5000}`);
         if (eventRes.ok) {
           const eventData = await eventRes.json();
           if (eventData.events && eventData.events.length > 0) {

@@ -152,7 +152,7 @@ Your folder: https://www.dropbox.com/scl/fo/nh8diamr2683mfvp5v4hz/...`);
         }
         
         try {
-          const result = await handleLegacyAPICall('http://localhost:3002/api/upload/dropbox', {
+          const result = await handleLegacyAPICall('https://lifestyle-design-backend-v2.onrender.com/api/upload/dropbox', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json'
@@ -179,7 +179,7 @@ Your folder: https://www.dropbox.com/scl/fo/nh8diamr2683mfvp5v4hz/...`);
       const filename = prompt('Enter filename (e.g., video.mp4):');
       if (fileId && filename) {
         try {
-          const response = await fetch('http://localhost:3002/api/upload/google-drive', {
+          const response = await fetch('https://lifestyle-design-backend-v2.onrender.com/api/upload/google-drive', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json'
@@ -262,7 +262,7 @@ Your folder: https://www.dropbox.com/scl/fo/nh8diamr2683mfvp5v4hz/...`);
       });
       formData.append('platform', 'instagram'); // Default platform
       
-      const response = await fetch('http://localhost:3002/api/upload/drag-drop', {
+      const response = await fetch('https://lifestyle-design-backend-v2.onrender.com/api/upload/drag-drop', {
         method: 'POST',
         body: formData
       });
@@ -334,7 +334,7 @@ Your folder: https://www.dropbox.com/scl/fo/nh8diamr2683mfvp5v4hz/...`);
 
     try {
       // Call the smart caption API for this specific video
-      const response = await fetch('http://localhost:3002/api/upload/refresh-caption', {
+      const response = await fetch('https://lifestyle-design-backend-v2.onrender.com/api/upload/refresh-caption', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -416,7 +416,7 @@ Your folder: https://www.dropbox.com/scl/fo/nh8diamr2683mfvp5v4hz/...`);
     showNotification(`📱 Getting real Instagram captions for ${uploadedVideos.length} videos...`);
     
     try {
-      const response = await fetch('http://localhost:3002/api/upload/get-real-instagram-captions', {
+      const response = await fetch('https://lifestyle-design-backend-v2.onrender.com/api/upload/get-real-instagram-captions', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -470,7 +470,7 @@ Your folder: https://www.dropbox.com/scl/fo/nh8diamr2683mfvp5v4hz/...`);
       console.log('📡 Fetching queue from backend...');
       
       // Fetch the queue display directly from autopilot queue
-      const response = await fetch('http://localhost:3002/api/autopilot/queue');
+      const response = await fetch('https://lifestyle-design-backend-v2.onrender.com/api/autopilot/queue');
       console.log('📡 Response status:', response.status);
       
       if (!response.ok) {
@@ -575,7 +575,7 @@ Your folder: https://www.dropbox.com/scl/fo/nh8diamr2683mfvp5v4hz/...`);
         const formData = new FormData();
         formData.append('video', file);
         
-        const response = await fetch('http://localhost:3002/api/upload/direct-video', {
+        const response = await fetch('https://lifestyle-design-backend-v2.onrender.com/api/upload/direct-video', {
           method: 'POST',
           body: formData
         });
@@ -609,7 +609,7 @@ Your folder: https://www.dropbox.com/scl/fo/nh8diamr2683mfvp5v4hz/...`);
     showNotification('🔄 Starting automatic video download from your Google Drive folder...', 'info');
     
     try {
-      const result = await handleLegacyAPICall('http://localhost:3002/api/upload/smart-drive-sync', {
+      const result = await handleLegacyAPICall('https://lifestyle-design-backend-v2.onrender.com/api/upload/smart-drive-sync', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -665,7 +665,7 @@ Your folder: https://www.dropbox.com/scl/fo/nh8diamr2683mfvp5v4hz/...`);
     showNotification('🔄 Syncing videos from Dropbox...');
 
     try {
-      const result = await handleLegacyAPICall('http://localhost:3002/api/upload/sync-dropbox', {
+      const result = await handleLegacyAPICall('https://lifestyle-design-backend-v2.onrender.com/api/upload/sync-dropbox', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -695,7 +695,7 @@ Your folder: https://www.dropbox.com/scl/fo/nh8diamr2683mfvp5v4hz/...`);
 
   const getDropboxStats = async () => {
     try {
-      const response = await fetch('http://localhost:3002/api/upload/dropbox-stats');
+      const response = await fetch('https://lifestyle-design-backend-v2.onrender.com/api/upload/dropbox-stats');
       const result = await response.json();
 
       if (result.success) {
@@ -732,7 +732,7 @@ Your folder: https://www.dropbox.com/scl/fo/nh8diamr2683mfvp5v4hz/...`);
     showNotification(`🧠 Analyzing ${videoList.length} videos with AI to select top performers...`);
 
     try {
-      const response = await fetch('http://localhost:3002/api/upload/smart-video-analyze', {
+      const response = await fetch('https://lifestyle-design-backend-v2.onrender.com/api/upload/smart-video-analyze', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -791,7 +791,7 @@ Example: video1.mp4, video2.mov, content.webm`);
     showNotification(`🔄 Adding ${videoList.length} videos from your Dropbox folder...`);
 
     try {
-      const response = await fetch('http://localhost:3002/api/upload/dropbox-folder', {
+      const response = await fetch('https://lifestyle-design-backend-v2.onrender.com/api/upload/dropbox-folder', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

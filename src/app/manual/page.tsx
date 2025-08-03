@@ -60,7 +60,7 @@ export default function ManualPost() {
   const loadVideos = useCallback(async () => {
     try {
       setLoading(true);
-      const response = await fetch('http://localhost:3002/api/manual/videos');
+      const response = await fetch('https://lifestyle-design-backend-v2.onrender.com/api/manual/videos');
       
       if (!response.ok) {
         throw new Error('Failed to load videos');
@@ -144,7 +144,7 @@ export default function ManualPost() {
     
     setRefreshingAudio(true);
     try {
-      const response = await fetch(`http://localhost:3002/api/manual/refresh-audio/${selectedVideo.videoId}`, {
+      const response = await fetch(`https://lifestyle-design-backend-v2.onrender.com/api/manual/refresh-audio/${selectedVideo.videoId}`, {
         method: 'POST'
       });
       
@@ -168,7 +168,7 @@ export default function ManualPost() {
     
     setRefreshingCaption(true);
     try {
-      const response = await fetch(`http://localhost:3002/api/manual/refresh-caption/${selectedVideo.videoId}`, {
+      const response = await fetch(`https://lifestyle-design-backend-v2.onrender.com/api/manual/refresh-caption/${selectedVideo.videoId}`, {
         method: 'POST'
       });
       
@@ -191,7 +191,7 @@ export default function ManualPost() {
     if (!selectedVideo) return;
     
     try {
-      const response = await fetch(`http://localhost:3002/api/manual/videos/${selectedVideo.videoId}`, {
+      const response = await fetch(`https://lifestyle-design-backend-v2.onrender.com/api/manual/videos/${selectedVideo.videoId}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json'
@@ -232,7 +232,7 @@ export default function ManualPost() {
       // Update video settings first
       await updateVideoSettings({});
       
-      const response = await fetch(`http://localhost:3002/api/manual/post-now/${selectedVideo.videoId}`, {
+      const response = await fetch(`https://lifestyle-design-backend-v2.onrender.com/api/manual/post-now/${selectedVideo.videoId}`, {
         method: 'POST'
       });
       
@@ -265,7 +265,7 @@ export default function ManualPost() {
     }
 
     try {
-      const response = await fetch(`http://localhost:3002/api/manual/schedule/${selectedVideo.videoId}`, {
+      const response = await fetch(`https://lifestyle-design-backend-v2.onrender.com/api/manual/schedule/${selectedVideo.videoId}`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -471,7 +471,7 @@ export default function ManualPost() {
                 <h3 className="form-label">📽️ Video Preview</h3>
                 <div className="preview-video">
                   <img 
-                    src={`http://localhost:3002/api/manual/video/${selectedVideo.videoId}/stream`}
+                    src={`https://lifestyle-design-backend-v2.onrender.com/api/manual/video/${selectedVideo.videoId}/stream`}
                     alt={`Preview for ${selectedVideo.filename}`}
                     style={{
                       width: '100%',

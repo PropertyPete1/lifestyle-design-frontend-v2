@@ -3,7 +3,7 @@
  * Handles development and production API endpoints
  */
 
-export const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3002';
+export const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'https://lifestyle-design-backend-v2.onrender.com';
 
 /**
  * Creates full API endpoint URL

@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from 'react';
 import ChartWave from './ChartWave';
-import { API_ENDPOINTS } from '../utils/api';
 
 const DashboardChart = () => {
   const [settings, setSettings] = useState({ dailyPostLimit: 3 });
@@ -21,7 +20,7 @@ const DashboardChart = () => {
   useEffect(() => {
     const fetchChartData = async () => {
       try {
-        const res = await fetch(API_ENDPOINTS.chartStatus());
+        const res = await fetch('https://lifestyle-design-backend-v2.onrender.com/api/chart/status');
         if (res.ok) {
           const data = await res.json();
           
@@ -98,7 +97,7 @@ const DashboardChart = () => {
     
     const pollForEvents = async () => {
       try {
-        const res = await fetch(API_ENDPOINTS.eventsRecent(lastEventCheck));
+        const res = await fetch(`https://lifestyle-design-backend-v2.onrender.com/api/events/recent?since=${lastEventCheck}`);
         if (res.ok) {
           const data = await res.json();
           

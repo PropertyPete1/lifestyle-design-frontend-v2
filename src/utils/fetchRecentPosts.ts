@@ -1,7 +1,7 @@
 export async function fetchRecentPosts(platform: 'instagram' | 'youtube') {
   try {
     // ✅ Connect to backend API that filters MongoDB by platform
-    const response = await fetch(`http://localhost:3002/api/activity/feed?platform=${platform}&limit=5`);
+    const response = await fetch(`https://lifestyle-design-backend-v2.onrender.com/api/activity/feed?platform=${platform}&limit=5`);
     
     if (!response.ok) {
       throw new Error(`Failed to fetch ${platform} posts: ${response.status}`);

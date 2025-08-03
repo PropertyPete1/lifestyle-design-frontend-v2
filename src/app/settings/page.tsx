@@ -2,8 +2,8 @@
 
 import { useState, useEffect } from 'react';
 
-// API configuration
-const API_BASE_URL = 'http://localhost:3002/api';
+// API configuration  
+const API_BASE_URL = 'https://lifestyle-design-backend-v2.onrender.com/api';
 
 // API helper functions
 const api = {

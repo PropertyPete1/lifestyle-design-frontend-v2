@@ -1,7 +1,7 @@
 // API function to fetch analytics data for heart indicators
 export async function getAnalyticsData() {
   try {
-    const response = await fetch('http://localhost:3002/api/dashboard/analytics');
+    const response = await fetch('https://lifestyle-design-backend-v2.onrender.com/api/dashboard/analytics');
     
     if (!response.ok) {
       throw new Error(`Analytics API error: ${response.status}`);
