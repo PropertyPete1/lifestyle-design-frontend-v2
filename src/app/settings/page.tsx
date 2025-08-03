@@ -55,6 +55,8 @@ export default function Settings() {
   const [youtubeToken, setYoutubeToken] = useState('');
   const [youtubeRefresh, setYoutubeRefresh] = useState('');
   const [youtubeChannel, setYoutubeChannel] = useState('');
+  const [youtubeClientId, setYoutubeClientId] = useState('');
+  const [youtubeClientSecret, setYoutubeClientSecret] = useState('');
   const [dropboxToken, setDropboxToken] = useState('');
   const [mongodbUri, setMongodbUri] = useState('');
   
@@ -110,6 +112,8 @@ export default function Settings() {
         setYoutubeToken(settings.youtubeToken || '');
         setYoutubeRefresh(settings.youtubeRefresh || '');
         setYoutubeChannel(settings.youtubeChannel || '');
+        setYoutubeClientId(settings.youtubeClientId || '');
+        setYoutubeClientSecret(settings.youtubeClientSecret || '');
         setDropboxToken(settings.dropboxToken || '');
         setMongodbUri(settings.mongodbUri || '');
         
@@ -178,6 +182,8 @@ export default function Settings() {
         youtubeToken,
         youtubeRefresh,
         youtubeChannel,
+        youtubeClientId,
+        youtubeClientSecret,
         dropboxToken,
         mongodbUri,
         runwayApi,
@@ -396,6 +402,32 @@ export default function Settings() {
               onChange={(e) => setYoutubeChannel(e.target.value)}
             />
             <small style={{color: 'rgba(255,255,255,0.6)', fontSize: '0.85rem'}}>Specifies which channel to post to</small>
+          </div>
+
+          <div className="form-group">
+            <label className="form-label">📺 YouTube Client ID</label>
+            <input 
+              type="text" 
+              className="form-input" 
+              placeholder="Enter YouTube OAuth Client ID..." 
+              value={youtubeClientId}
+              onChange={(e) => setYoutubeClientId(e.target.value)}
+              style={{fontFamily: 'monospace', fontSize: '0.9rem'}}
+            />
+            <small style={{color: 'rgba(255,255,255,0.6)', fontSize: '0.85rem'}}>OAuth Client ID from Google Cloud Console</small>
+          </div>
+
+          <div className="form-group">
+            <label className="form-label">📺 YouTube Client Secret</label>
+            <input 
+              type="password" 
+              className="form-input" 
+              placeholder="Enter YouTube OAuth Client Secret..." 
+              value={youtubeClientSecret}
+              onChange={(e) => setYoutubeClientSecret(e.target.value)}
+              style={{fontFamily: 'monospace', fontSize: '0.9rem'}}
+            />
+            <small style={{color: 'rgba(255,255,255,0.6)', fontSize: '0.85rem'}}>OAuth Client Secret from Google Cloud Console</small>
           </div>
 
           <div className="form-group">
